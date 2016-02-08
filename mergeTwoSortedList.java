@@ -32,8 +32,35 @@ public class mergeTwoSortedList {
 			 head=head.next;
 		 }
 	 }
+	 
+	 public ListNode mergeTwoLists(ListNode l1, ListNode l2){
+		 ListNode fakeHead = new ListNode(0);
+		 ListNode cur = fakeHead;
+		 while(l1!=null && l2!=null){
+			 if(l1.val > l2.val){
+				 cur.next = l2;
+				 l2 = l2.next;
+			 }
+			 else{
+				 cur.next = l1;
+				 l1 = l1.next;
+			 }
+			 cur = cur.next;
+		 }
+		 //还要考虑剩下没完的list，比如1-2-3和9-10，cur=1-2-3，但是9-10还没动呢，要再来个cur.next = l1/2。
+		 if(l1!=null){
+			 cur.next = l1;
+		 }
+		 else{
+			 cur.next = l2;
+		 }
+		 return fakeHead.next;
+	 } 
+	 
+	 
+	 
 	
-	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+	public ListNode mergeTwoLists_(ListNode l1, ListNode l2) {
 		ListNode p1 = l1;
         ListNode p2 = l2;
  
@@ -60,54 +87,5 @@ public class mergeTwoSortedList {
         return fakeHead.next;
 		
 	}
-//		if(l1==null&&l2!=null)	return l2;
-//		if(l1!=null&&l2==null)	return l1;
-//        ListNode first;
-//        ListNode head;
-//        
-//        //put first value into head firstly
-//        if(l1.val>l2.val)	{
-//        	first = new ListNode(l2.val);
-//        	l2=l2.next;
-//        }
-//        else{
-//        	first = new ListNode(l1.val);
-//        	l1=l1.next;
-//        }
-//        
-//        head = first;
-//        //compare and merge then
-//        System.out.println(l1.val);
-//        System.out.println(l2.val);
-//        while(l1!=null||l2!=null){
-//        	if(l1.val>l2.val){
-//        		ListNode tmp = new ListNode(l2.val);
-//        		head.next=tmp;
-//        		l2=l2.next;
-//        	}	
-//        	else{
-//        		ListNode tmp = new ListNode(l1.val);
-//        		head.next = tmp;
-//        		l1=l1.next;
-//        	}
-//        	head = head.next;
-//        }
-//        
-//        //put the rest of chain into the list
-//        if(l1==null){
-//        	while(l2!=null){
-//        		ListNode tmp = new ListNode(l2.val);
-//        		head.next=tmp;
-//        		l2=l2.next;
-//        	}
-//        }
-//        else{
-//        	while(l1!=null){
-//        		ListNode tmp = new ListNode(l1.val);
-//        		head.next = tmp;
-//        		l1=l1.next;
-//        	}
-//        }
-//        return first;
-//    }
+
 }
