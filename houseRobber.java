@@ -1,13 +1,40 @@
 package testAndfun;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class houseRobber {
 	public static void main(String[] args){
 		houseRobber hr = new houseRobber();
 		int[] input = {2,7,9,3,1};
-		System.out.println(hr.robMany(input));
+		System.out.println(hr.robCircle(input));
 	}
+	
+	public int robCircle(int[] nums){
+		if(nums==null || nums.length<1)
+            return 0;
+		int[] arr1;
+		int[] arr2;
+		arr1 = move(nums,0);
+		arr2 = move(nums,nums.length-1);
+		return Math.max(robMany(arr1), robMany(arr2));
+
+	}
+	
+	private static int[] move(int[] nums, int index){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int num : nums){
+			list.add(num);
+		}
+		list.remove(index);
+		int[] ans = new int[nums.length];
+		for(int i=0;i<list.size();i++)
+			ans[i]=list.get(i);
+		return ans;
+	}
+	
+	
 	
 	//only if required to rob 2 houses
 	 public int rob(int[] nums) {
