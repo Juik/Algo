@@ -10,7 +10,7 @@ public class houseRobber {
 		int[] input = {2,7,9,3,1};
 		System.out.println(hr.robCircle(input));
 	}
-	
+	//house robber II
 	public int robCircle(int[] nums){
 		if(nums==null || nums.length<1)
             return 0;
@@ -60,7 +60,7 @@ public class houseRobber {
 	        }
 	        return max;
 	    }
-	 
+	 //house robber I
 	 public int robMany(int[] nums){
 	        if(nums==null || nums.length<1)
 	            return 0;
