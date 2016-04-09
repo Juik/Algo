@@ -5,11 +5,11 @@ import java.util.Stack;
 
 class MinStack {
 	Stack<Integer> stack = new Stack<Integer>();
-	int min;
+	int min=Integer.MAX_VALUE;
 	
 	public static void main(String args[]){
 		MinStack ms  = new MinStack();
-		ms.push(2);
+		ms.push(-2);
 		ms.push(1);
 		ms.push(2);
 		ms.push(1);
